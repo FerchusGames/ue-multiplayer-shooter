@@ -7,6 +7,9 @@
 #include "InputActionValue.h"
 #include "BlasterCharacter.generated.h"
 
+class USpringArmComponent;
+class UCameraComponent;
+class UWidgetComponent;
 class UInputAction;
 class UInputMappingContext;
 
@@ -40,12 +43,13 @@ protected:
 	
 private:
 	UPROPERTY(VisibleAnywhere, Category = Camera)
-	class USpringArmComponent* CameraBoom;
+	USpringArmComponent* CameraBoom;
 
 	UPROPERTY(VisibleAnywhere, Category = Camera)
-	class UCameraComponent* FollowCamera;
+	UCameraComponent* FollowCamera;
 
-	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UWidgetComponent* OverheadWidget;
 public:	
 	
 
