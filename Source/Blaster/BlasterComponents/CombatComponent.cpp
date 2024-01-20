@@ -77,6 +77,28 @@ void UCombatComponent::SetHUDCrosshairs(float DeltaTime)
 				HUDPackage.CrosshairsBottom = nullptr;
 			}
 
+			CrosshairVelocityFactor = Character->GetWalkSpeedPercent();
+			
+			if (Character->GetCharacterMovement()->IsFalling())
+			{
+				CrosshairFallingFactor = FMath::FInterpTo(
+					CrosshairFallingFactor,
+					HUD->GetCrosshairSpreadFalling(),
+					DeltaTime,
+					HUD->GetCrosshairSpreadFallingInterpSpeed());
+			}
+
+			else
+			{
+				CrosshairFallingFactor = FMath::FInterpTo(
+					CrosshairFallingFactor,
+					0.f,
+					DeltaTime,
+					HUD->GetCrosshairSpreadLandingInterpSpeed());
+			}
+			
+			HUDPackage.CrosshairSpread = CrosshairVelocityFactor + CrosshairFallingFactor;
+			
 			HUD->SetHUDPackage(HUDPackage);
 		}
 	}

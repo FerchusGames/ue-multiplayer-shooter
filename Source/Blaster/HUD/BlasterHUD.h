@@ -17,6 +17,7 @@ public:
 	UTexture2D* CrosshairsRight;
 	UTexture2D* CrosshairsTop;
 	UTexture2D* CrosshairsBottom;
+	float CrosshairSpread;
 };
 
 /**
@@ -33,8 +34,24 @@ public:
 private:
 	FHUDPackage HUDPackage;
 
-	void DrawCrosshair(UTexture2D* Texture, FVector2d ViewportCenter);
+	void DrawCrosshair(UTexture2D* Texture, FVector2d ViewportCenter, FVector2d Spread);
 
+	UPROPERTY(EditAnywhere)
+	float CrosshairSpreadMax = 16.f;
+
+	UPROPERTY(EditAnywhere)
+	float CrosshairSpreadFalling = 2.25f;
+
+	UPROPERTY(EditAnywhere)
+	float CrosshairSpreadFallingInterpSpeed = 2.25f;
+
+	UPROPERTY(EditAnywhere)
+	float CrosshairSpreadLandingInterpSpeed = 30.f;
+	
 public:
 	FORCEINLINE void SetHUDPackage(const FHUDPackage& Package) { HUDPackage = Package; }
+	
+	FORCEINLINE float GetCrosshairSpreadFalling() const { return CrosshairSpreadFalling; }
+	FORCEINLINE float GetCrosshairSpreadFallingInterpSpeed() const { return CrosshairSpreadFallingInterpSpeed; }
+	FORCEINLINE float GetCrosshairSpreadLandingInterpSpeed() const { return CrosshairSpreadLandingInterpSpeed; }
 };

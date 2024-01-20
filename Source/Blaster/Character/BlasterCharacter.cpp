@@ -290,6 +290,14 @@ AWeapon* ABlasterCharacter::GetEquippedWeapon()
 	return Combat->EquippedWeapon;
 }
 
+float ABlasterCharacter::GetWalkSpeedPercent() const
+{
+	FVector WalkSpeed = GetVelocity();
+	WalkSpeed.Z = 0.f;
+
+	return WalkSpeed.Size() / GetCharacterMovement()->MaxWalkSpeed;
+}
+
 void ABlasterCharacter::OnRep_OverlappingWeapon(AWeapon* LastWeapon)
 {
 	if (OverlappingWeapon)
