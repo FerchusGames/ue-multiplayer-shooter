@@ -114,4 +114,6 @@ public:
 	FORCEINLINE ETurningInPlace GetTurningInPlace() const { return TurningInPlace; }
 
 	float GetWalkSpeedPercent() const;
+
+	FVector GetHitTarget() const;
 };
