@@ -66,9 +66,15 @@ private:
 
 	bool bFireButtonPressed;
 
+	/*
+	 * HUD and crosshairs
+	*/
+	
 	float CrosshairVelocityFactor;
 	float CrosshairFallingFactor;
-
+	float CrosshairAimFactor;
+	float CrosshairShootingFactor;
+	
 	FVector HitTarget;
 
 	/*
