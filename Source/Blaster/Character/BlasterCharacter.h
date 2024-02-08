@@ -116,4 +116,6 @@ public:
 	float GetWalkSpeedPercent() const;
 
 	FVector GetHitTarget() const;
+
+	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 };

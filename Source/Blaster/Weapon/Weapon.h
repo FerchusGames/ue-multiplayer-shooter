@@ -31,6 +31,10 @@ public:
 	void ShowPickupWidget(bool bShowWidget);
 	virtual void Fire(const FVector& HitTarget);
 
+	/*
+	* Textures for the weapon crosshairs
+	*/
+
 	UPROPERTY(EditAnywhere, Category = "Crosshairs")
 	UTexture2D* CrosshairsCenter;
 
@@ -90,12 +94,20 @@ private:
 	TSubclassOf<ACasing>CasingClass;
 
 	/*
-	 * Textures for the weapon crosshairs
-	 */
+	 * Zoomed FOV While Aiming
+	*/
+
+	UPROPERTY(EditAnywhere)
+	float ZoomedFOV = 30.f;
+
+	UPROPERTY(EditAnywhere)
+	float ZoomInterpSpeed = 20.f;
 	
 public:
 	void SetWeaponState(EWeaponState State);
 	FORCEINLINE USphereComponent* GetAreaSphere() const { return AreaSphere; }
 	FORCEINLINE USkeletalMeshComponent* GetWeaponMesh() const { return WeaponMesh; }
+	FORCEINLINE float GetZoomedFOV() { return ZoomedFOV; }
+	FORCEINLINE float GetZoomInterpSpeed() { return ZoomInterpSpeed; }
 };
 
